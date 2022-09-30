@@ -13,9 +13,23 @@
         v-for="(item, index) in notifications"
         :key="index"
       >
-        <figure>
+        <div class="image_wrapper">
           <img :src="`${getImage(item.pic)}.webp`" alt="" />
-        </figure>
+        </div>
+        <div class="body">
+          <p>
+            <span class="name">{{ item.name }}</span>
+            <span class="message-body">{{ item.body }}</span>
+            <strong v-if="item.reacted">{{ item.reacted }}</strong>
+          </p>
+          <p class="time">{{ item.time }}</p>
+          <div v-if="item.privateMessage" class="private-message">
+            {{ item.privateMessage }}
+          </div>
+        </div>
+        <!-- <figure v-if="item.commentedPicture" class="comment-figure">
+          <img :src="`${getImage(item.commentedPicture)}.webp`" alt="" />
+        </figure> -->
       </div>
     </div>
   </div>
@@ -29,30 +43,51 @@ export default defineComponent({
       {
         name: "Mark Webber",
         pic: "avatar-mark-webber",
+        time: "1m ago",
+        body: "reacted to your recent post",
+        reacted: "My first tournament today!",
       },
       {
         name: "Angela Gray",
         pic: "avatar-angela-gray",
+        time: "5m ago",
+        body: "followed you",
       },
       {
         name: "Jacob Thompson",
         pic: "avatar-jacob-thompson",
+        time: "1 day ago",
+        body: "has joined your group",
+        reacted: "Chess Club",
       },
       {
         name: "Rizky Hasanuddin",
         pic: "avatar-rizky-hasanuddin",
+        time: "5 days ago",
+        body: "sent you a private message",
+        privateMessage:
+          "Hello, thanks for setting up the Chess Club, I've been member for a few weeks now and I'm already having alots of fun and improving my game.",
       },
       {
         name: "kimberly Smith",
         pic: "avatar-kimberly-smith",
+        time: "1 week ago",
+        body: "commented on your profile",
+        commentedPicture: "image-chess",
       },
       {
         name: "Nathan Peterson",
         pic: "avatar-nathan-peterson",
+        time: "2 weeks ago",
+        body: "reacted to your recent post",
+        reacted: "5 end-game strategies to increase your win rate",
       },
       {
         name: "Anna Kim",
         pic: "avatar-anna-kim",
+        time: "2 weeks ago",
+        body: "left the group",
+        reacted: "Chess Club",
       },
     ]);
 
