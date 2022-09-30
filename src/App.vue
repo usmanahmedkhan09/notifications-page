@@ -3,9 +3,9 @@
     <div class="card--header">
       <div class="heading">
         <p class="text">Notifications</p>
-        <div class="count">3</div>
+        <div class="count">{{ unreadCount }}</div>
       </div>
-      <div class="status">Mark all as read</div>
+      <div class="status" @click="markedAllRead">Mark all as read</div>
     </div>
     <div class="card--body">
       <div
@@ -36,7 +36,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { computed, defineComponent, ref } from "vue";
 
 export default defineComponent({
   setup() {
@@ -99,10 +99,18 @@ export default defineComponent({
       },
     ]);
 
+    let unreadCount = computed(() => {
+      return notifications.value.filter((item: any) => !item.read).length;
+    });
+
+    const markedAllRead = () => {
+      notifications.value.filter((item: any) => (item.read = true));
+    };
+
     const getImage = (url: any) => {
       return new URL(`./assets/images/${url}`, import.meta.url).href;
     };
-    return { notifications, getImage };
+    return { notifications, getImage, unreadCount, markedAllRead };
   },
 });
 </script>
