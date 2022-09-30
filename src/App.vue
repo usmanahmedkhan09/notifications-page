@@ -10,6 +10,7 @@
     <div class="card--body">
       <div
         class="notifications"
+        :class="!item.read ? 'read' : 'unread'"
         v-for="(item, index) in notifications"
         :key="index"
       >
@@ -27,9 +28,9 @@
             {{ item.privateMessage }}
           </div>
         </div>
-        <!-- <figure v-if="item.commentedPicture" class="comment-figure">
+        <figure v-if="item.commentedPicture" class="comment-figure">
           <img :src="`${getImage(item.commentedPicture)}.webp`" alt="" />
-        </figure> -->
+        </figure>
       </div>
     </div>
   </div>
@@ -46,12 +47,14 @@ export default defineComponent({
         time: "1m ago",
         body: "reacted to your recent post",
         reacted: "My first tournament today!",
+        read: false,
       },
       {
         name: "Angela Gray",
         pic: "avatar-angela-gray",
         time: "5m ago",
         body: "followed you",
+        read: false,
       },
       {
         name: "Jacob Thompson",
@@ -59,6 +62,7 @@ export default defineComponent({
         time: "1 day ago",
         body: "has joined your group",
         reacted: "Chess Club",
+        read: false,
       },
       {
         name: "Rizky Hasanuddin",
@@ -67,6 +71,7 @@ export default defineComponent({
         body: "sent you a private message",
         privateMessage:
           "Hello, thanks for setting up the Chess Club, I've been member for a few weeks now and I'm already having alots of fun and improving my game.",
+        read: true,
       },
       {
         name: "kimberly Smith",
@@ -74,6 +79,7 @@ export default defineComponent({
         time: "1 week ago",
         body: "commented on your profile",
         commentedPicture: "image-chess",
+        read: true,
       },
       {
         name: "Nathan Peterson",
@@ -81,6 +87,7 @@ export default defineComponent({
         time: "2 weeks ago",
         body: "reacted to your recent post",
         reacted: "5 end-game strategies to increase your win rate",
+        read: true,
       },
       {
         name: "Anna Kim",
@@ -88,6 +95,7 @@ export default defineComponent({
         time: "2 weeks ago",
         body: "left the group",
         reacted: "Chess Club",
+        read: true,
       },
     ]);
 
