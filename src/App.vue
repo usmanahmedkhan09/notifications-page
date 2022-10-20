@@ -15,7 +15,7 @@
         :key="index"
       >
         <div class="image_wrapper">
-          <img :src="getImage(`${item.pic}.jpg`)" alt="user" />
+          <img :src="getImage(`${item.pic}.webp`)" alt="user" />
         </div>
         <div class="body">
           <p>
@@ -29,7 +29,7 @@
           </div>
         </div>
         <figure v-if="item.commentedPicture" class="comment-figure">
-          <img :src="getImage(`${item.commentedPicture}.jpg`)" alt="user" />
+          <img :src="getImage(`${item.commentedPicture}.webp`)" alt="user" />
         </figure>
       </div>
     </div>
