@@ -3,7 +3,7 @@
     <div class="card--header">
       <div class="heading">
         <p class="text">Notifications</p>
-        <div class="count">{{ unreadCount }}</div>
+        <div class="count" v-if="unreadCount > 0">{{ unreadCount }}</div>
       </div>
       <div class="status" @click="markedAllRead">Mark all as read</div>
     </div>
@@ -15,7 +15,7 @@
         :key="index"
       >
         <div class="image_wrapper">
-          <img :src="`${getImage(item.pic)}.webp`" alt="" />
+          <img :src="`${getImage(item.pic)}.jpg`" alt="user" />
         </div>
         <div class="body">
           <p>
@@ -29,7 +29,7 @@
           </div>
         </div>
         <figure v-if="item.commentedPicture" class="comment-figure">
-          <img :src="`${getImage(item.commentedPicture)}.webp`" alt="" />
+          <img :src="`${getImage(item.commentedPicture)}.jpg`" alt="user" />
         </figure>
       </div>
     </div>
